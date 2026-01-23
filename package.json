@@ -2,7 +2,7 @@
   "name": "dotreadme",
   "displayName": "DotReadme",
   "description": "The ultimate README optimizer for VS Code Marketplace, GitHub, and Open VSX Registry.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "FreeRave",
   "icon": "media/icon.png",
   "repository": {
