@@ -1,0 +1,128 @@
+{
+  "name": "dotreadme",
+  "displayName": "DotReadme",
+  "description": "The ultimate README optimizer for VS Code Marketplace, GitHub, and Open VSX Registry.",
+  "version": "0.0.1",
+  "publisher": "FreeRave",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FreeRave/DotReadme.git"
+  },
+  "engines": {
+    "vscode": "^1.108.1"
+  },
+  "categories": [
+    "Visualization",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dotreadme.openSimulator",
+        "title": "DotReadme: Open Simulator",
+        "icon": "$(preview)"
+      },
+      {
+        "command": "dotreadme.fixRelativePaths",
+        "title": "DotReadme: Fix Relative Paths",
+        "icon": "$(file-media)"
+      },
+      {
+        "command": "dotreadme.insertBadge",
+        "title": "DotReadme: Insert Badge",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "dotreadme.auditReadme",
+        "title": "Audit README Quality",
+        "category": "DotReadme",
+        "icon": "$(check)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "dotreadme.openSimulator",
+          "when": "resourceLangId == markdown",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "dotreadme.auditReadme",
+          "when": "resourceLangId == markdown",
+          "group": "dotreadme_group@1"
+        },
+        {
+          "command": "dotreadme.fixRelativePaths",
+          "when": "resourceLangId == markdown",
+          "group": "dotreadme_group@2"
+        },
+        {
+          "command": "dotreadme.insertBadge",
+          "when": "resourceLangId == markdown",
+          "group": "dotreadme_group@3"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dotreadme-sidebar",
+          "title": "DotReadme",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "dotreadme-sidebar": [
+        {
+          "id": "dotreadme-view",
+          "name": "Quick Actions",
+          "icon": "$(tools)"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "dotreadme-view",
+        "contents": "Welcome to DotReadme! 🚀\nOptimize your documentation with one click.\n\n[$(check) Audit README Quality](command:dotreadme.auditReadme)\n\n[$(preview) Open Simulator](command:dotreadme.openSimulator)\n\n[$(file-media) Fix Relative Paths](command:dotreadme.fixRelativePaths)\n\n[$(shield) Insert Badge](command:dotreadme.insertBadge)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.108.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.27.0",
+    "eslint": "^9.39.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0"
+  }
+}
