@@ -9,11 +9,11 @@
   </p>
 
   <p>
-    <a href="https://marketplace.visualstudio.com/items?itemName=kareem2099.dotreadme">
-      <img src="https://img.shields.io/visual-studio-marketplace/v/kareem2099.dotreadme?style=flat-square&color=007acc" alt="Version" />
+    <a href="https://marketplace.visualstudio.com/items?itemName=FreeRave.dotreadme">
+      <img src="https://img.shields.io/visual-studio-marketplace/v/FreeRave.dotreadme?style=flat-square&color=007acc" alt="Version" />
     </a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=kareem2099.dotreadme">
-      <img src="https://img.shields.io/visual-studio-marketplace/i/kareem2099.dotreadme?style=flat-square&color=success" alt="Installs" />
+    <a href="https://marketplace.visualstudio.com/items?itemName=FreeRave.dotreadme">
+      <img src="https://img.shields.io/visual-studio-marketplace/i/FreeRave.dotreadme?style=flat-square&color=success" alt="Installs" />
     </a>
     <a href="https://github.com/kareem2099/DotReadme/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/kareem2099/DotReadme?style=flat-square&color=blueviolet" alt="License" />
