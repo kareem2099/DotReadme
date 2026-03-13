@@ -2,12 +2,12 @@
   "name": "dotreadme",
   "displayName": "DotReadme",
   "description": "The ultimate README optimizer for VS Code Marketplace, GitHub, and Open VSX Registry.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "FreeRave",
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FreeRave/DotReadme.git"
+    "url": "https://github.com/kareem2099/DotReadme.git"
   },
   "engines": {
     "vscode": "^1.108.1"
@@ -21,6 +21,45 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "DotReadme",
+      "properties": {
+        "dotreadme.ai.provider": {
+          "type": "string",
+          "enum": ["anthropic", "openai", "gemini"],
+          "default": "anthropic",
+          "description": "The AI provider to use for README enhancements.",
+          "enumDescriptions": [
+            "Use Anthropic Claude API",
+            "Use OpenAI GPT API",
+            "Use Google Gemini API"
+          ]
+        },
+        "dotreadme.ai.anthropicApiKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Your Anthropic API Key. Get one at [console.anthropic.com](https://console.anthropic.com). **Never share this key.**",
+          "secret": true
+        },
+        "dotreadme.ai.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Your OpenAI API Key. Get one at [platform.openai.com](https://platform.openai.com). **Never share this key.**",
+          "secret": true
+        },
+        "dotreadme.ai.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Your Google Gemini API Key. Get one at [aistudio.google.com](https://aistudio.google.com/app/apikey). **Never share this key.**",
+          "secret": true
+        },
+        "dotreadme.ai.model": {
+          "type": "string",
+          "default": "",
+          "description": "Override the default AI model. Leave empty to use the recommended default (claude-sonnet-4-20250514 or gpt-4o)."
+        }
+      }
+    },
     "commands": [
       {
         "command": "dotreadme.openSimulator",
@@ -42,6 +81,26 @@
         "title": "Audit README Quality",
         "category": "DotReadme",
         "icon": "$(check)"
+      },
+      {
+        "command": "dotreadme.rewriteForClarity",
+        "title": "Rewrite for Clarity",
+        "category": "DotReadme"
+      },
+      {
+        "command": "dotreadme.rewriteForTone",
+        "title": "Rewrite for Tone",
+        "category": "DotReadme"
+      },
+      {
+        "command": "dotreadme.generateMissingSection",
+        "title": "Generate Missing Section",
+        "category": "DotReadme"
+      },
+      {
+        "command": "dotreadme.generateToc",
+        "title": "Generate Table of Contents",
+        "category": "DotReadme"
       }
     ],
     "menus": {
@@ -67,9 +126,42 @@
           "command": "dotreadme.insertBadge",
           "when": "resourceLangId == markdown",
           "group": "dotreadme_group@3"
+        },
+        {
+          "command": "dotreadme.generateToc",
+          "group": "dotreadme_group@4",
+          "when": "resourceLangId == markdown"
+        },
+        {
+          "submenu": "dotreadme.aiSubmenu",
+          "group": "dotreadme_group@4",
+          "when": "resourceLangId == markdown"
+        }
+      ],
+      "dotreadme.aiSubmenu": [
+        {
+          "command": "dotreadme.rewriteForClarity",
+          "group": "1_rewrite@1",
+          "when": "editorHasSelection && resourceLangId == markdown"
+        },
+        {
+          "command": "dotreadme.rewriteForTone",
+          "group": "1_rewrite@2",
+          "when": "editorHasSelection && resourceLangId == markdown"
+        },
+        {
+          "command": "dotreadme.generateMissingSection",
+          "group": "2_generate@1",
+          "when": "resourceLangId == markdown"
         }
       ]
     },
+    "submenus": [
+      {
+        "id": "dotreadme.aiSubmenu",
+        "label": "DotReadme AI"
+      }
+    ],
     "viewsContainers": {
       "activitybar": [
         {
@@ -91,7 +183,7 @@
     "viewsWelcome": [
       {
         "view": "dotreadme-view",
-        "contents": "Welcome to DotReadme! 🚀\nOptimize your documentation with one click.\n\n[$(check) Audit README Quality](command:dotreadme.auditReadme)\n\n[$(preview) Open Simulator](command:dotreadme.openSimulator)\n\n[$(file-media) Fix Relative Paths](command:dotreadme.fixRelativePaths)\n\n[$(shield) Insert Badge](command:dotreadme.insertBadge)"
+        "contents": "Welcome to DotReadme! 🚀\nOptimize your documentation with one click.\n\n[$(check) Audit README Quality](command:dotreadme.auditReadme)\n\n[$(preview) Open Simulator](command:dotreadme.openSimulator)\n\n[$(file-media) Fix Relative Paths](command:dotreadme.fixRelativePaths)\n\n[$(shield) Insert Badge](command:dotreadme.insertBadge)\n\n[$(list-unordered) Generate TOC](command:dotreadme.generateToc)\n\n[$(sparkle) DotReadme AI](command:dotreadme.generateMissingSection)"
       }
     ]
   },

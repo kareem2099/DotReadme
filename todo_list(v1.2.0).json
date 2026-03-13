@@ -1,0 +1,41 @@
+{
+  "version": "1.2.0",
+  "project": "DotReadme",
+  "description": "Enhance visual simulation with Mobile/NPM previews, dynamic badges, and improved editor UX.",
+  "status": "backlog",
+  "planned_tasks": [
+    {
+      "category": "Simulator Enhancements",
+      "tasks": [
+        "[ ] Build Mobile Preview simulation (GitHub mobile layout)",
+        "[ ] Add support for NPM Registry preview mode",
+        "[ ] Implement synchronized auto-scrolling between editor and simulator"
+      ]
+    },
+    {
+      "category": "Badges & Templates",
+      "tasks": [
+        "[ ] Add pre-built README templates (React app, CLI tool, API library)",
+        "[ ] Implement more dynamic badges (npm downloads, GitHub stars, WakaTime)",
+        "[ ] Create an interactive visual badge configuration UI"
+      ]
+    },
+    {
+      "category": "Workspace Utilities",
+      "tasks": [
+        "[ ] Add advanced search and replace for workspace markdown links"
+      ]
+    }
+  ],
+  "key_features_planned": [
+    "📱 Mobile view simulation",
+    "🌐 NPM Registry preview mode",
+    "📦 Pre-built README templates"
+  ],
+  "technical_goals": [
+    "Optimize webview memory usage when rendering heavy markdown/images"
+  ],
+  "next_version_considerations": [
+    "Preparation for the core audit logic extraction in v1.3.0"
+  ]
+}

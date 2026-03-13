@@ -19,7 +19,7 @@ export interface AuditResult {
 
 export class ReadmeAuditor {
 
-    // 📋 Define All Quality Rules
+    // Define All Quality Rules
     private static rules: AuditRule[] = [
         // ========== STRUCTURE RULES (40 points) ==========
         {
@@ -165,7 +165,7 @@ export class ReadmeAuditor {
         return { grade: 'F', color: '#ff4444', emoji: '❌' };
     }
 
-    // 📊 Generate HTML Report (for Webview)
+    // Generate HTML Report (for Webview)
     public static generateHtmlReport(result: AuditResult): string {
         const grade = this.getGrade(result.percentage);
 

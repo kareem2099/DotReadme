@@ -31,7 +31,7 @@ export async function auditReadmeCommand(context: vscode.ExtensionContext): Prom
     }
 }
 
-function showDetailedAudit(result: any, context: vscode.ExtensionContext) {
+function showDetailedAudit(result: ReturnType<typeof ReadmeAuditor.audit>, context: vscode.ExtensionContext) {
     const panel = vscode.window.createWebviewPanel(
         'readmeAudit',
         '📊 README Audit Report',

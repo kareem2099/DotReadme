@@ -1,0 +1,34 @@
+{
+  "version": "1.1.0",
+  "project": "DotReadme",
+  "description": "Focus on AI-powered README generation, smart suggestions, and automated content structuring.",
+  "status": "completed",
+  "planned_tasks": [
+    {
+      "category": "AI-Powered Features",
+      "tasks": [
+        "[✅] Integrate AI API (OpenAI/Anthropic) for intelligent README suggestions",
+        "[✅] Implement auto-generation of missing sections (e.g., Installation, License)",
+        "[✅] Add context menu action to 'Rewrite section for clarity or tone'"
+      ]
+    },
+    {
+      "category": "Content Utilities",
+      "tasks": [
+        "[✅] Implement an automated Table of Contents (TOC) generator and updater"
+      ]
+    }
+  ],
+  "key_features_planned": [
+    "🤖 AI-powered README generation and enhancement",
+    "🗂️ Automated TOC generation"
+  ],
+  "technical_goals": [
+    "Securely integrate external AI APIs without leaking keys (e.g., Implement BYOK - Bring Your Own Key)"
+  ],
+  "next_version_considerations": [
+    "Refine the Live Quality Audit (from v1.3.0 backlog) and add export options",
+    "Expand AI capabilities with local models (e.g., Ollama support)",
+    "Add more interactive template options for specific project types (React, CLI, etc.)"
+  ]
+}

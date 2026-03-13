@@ -41,7 +41,7 @@ export async function insertBadgeCommand(): Promise<void> {
         {
             label: '$(pencil) Custom Badge',
             description: 'Write your own markdown',
-            detail: 'CUSTOM' // Flag to recognize it below
+            detail: 'CUSTOM'
         }
     ];
 
@@ -50,7 +50,7 @@ export async function insertBadgeCommand(): Promise<void> {
         placeHolder: `Insert a badge for ${user}/${repo} 🛡️`
     });
 
-    if (!selected) {return;}
+    if (!selected) { return; }
 
     let badgeMarkdown = selected.detail;
 
@@ -60,18 +60,19 @@ export async function insertBadgeCommand(): Promise<void> {
             prompt: 'Enter badge Markdown',
             placeHolder: '![alt](https://img.shields.io/...)'
         });
-        if (!input) {return;}
+        if (!input) { return; }
         badgeMarkdown = input;
     }
 
+    // Safety guard: bail out if badge is missing or still flagged as CUSTOM
+    if (!badgeMarkdown || badgeMarkdown === 'CUSTOM') { return; }
+
     // 5. Insert
     editor.edit(editBuilder => {
-        // If no selection, put it at cursor
-        // If there is selection, replace it
         if (editor.selection.isEmpty) {
-            editBuilder.insert(editor.selection.active, badgeMarkdown!);
+            editBuilder.insert(editor.selection.active, badgeMarkdown);
         } else {
-            editBuilder.replace(editor.selection, badgeMarkdown!);
+            editBuilder.replace(editor.selection, badgeMarkdown);
         }
     });
 }
